@@ -1,4 +1,4 @@
-function add(number, addedNumber ){
+function add(number, addedNumber){
   return number + addedNumber;
 }
 
