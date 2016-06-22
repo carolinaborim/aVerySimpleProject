@@ -3,7 +3,6 @@ var add = require('./src/add')
 
 const Hapi = require('hapi');
 
-// Create a server with a host and port
 const server = new Hapi.Server();
 server.connection({ 
   host: 'localhost', 
@@ -20,7 +19,6 @@ server.route({
   }
 });
 
-// Start the server
 server.start((err) => {
 
   if (err) {
