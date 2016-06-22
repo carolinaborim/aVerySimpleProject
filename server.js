@@ -1,5 +1,6 @@
 'use strict';
 var add = require('./src/add')
+var subtract = require('./src/subtract')
 
 const Hapi = require('hapi');
 
@@ -19,10 +20,20 @@ server.route({
   }
 });
 
-server.start((err) => {
-
-  if (err) {
-    throw err;
+server.route({
+  method: 'GET',
+  path:'/subtract/{num1}/{num2}', 
+  handler: function (request, reply) {
+    var first = parseInt(request.params.num1);
+    var second = parseInt(request.params.num2);
+    return reply(subtract(first, second));
   }
-  console.log('Server running at:', server.info.uri);
 });
+
+  server.start((err) => {
+
+    if (err) {
+      throw err;
+    }
+    console.log('Server running at:', server.info.uri);
+  });
